@@ -1,11 +1,12 @@
 import { Injectable, Logger } from '@nestjs/common';
 import * as fs from 'fs';
+import { Card } from 'src/cards/cards.interface';
 
 @Injectable()
 export class JsonfetcherService {
     private readonly logger = new Logger(JsonfetcherService.name);
 
-    getRandomCard(): string {
+    getRandomCard(): Card {
         let allCards: any[] = this.parseJsonFiles()
         return allCards[Math.floor(Math.random()*allCards.length)]
     }
