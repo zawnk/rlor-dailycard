@@ -50,7 +50,7 @@ export class CardsService {
             `**Mana Cost** | ${card.cost}\n` +
             `**Spell Speed** | *${card.spellSpeed}*\n` +
             `**Card Text** | ${card.description}\n` +
-            `**Flavor Text** | *${card.flavorText}*\n`
+            `**Flavor Text** | *${card.flavorText.replace(/\n/g, ' ')}*\n`
         return bodyTable
     }
 
@@ -64,9 +64,9 @@ export class CardsService {
             `**Attack** | ${card.attack}\n` +
             `**Health** | ${card.health}\n` +
             `**Keywords** |*${card.keywords.join(', ') || 'None.'}*\n` +
-            `**Card Text** | ${card.descriptionRaw}\n` +
+            `${card.descriptionRaw ? `**Card Text** | ${card.descriptionRaw}\n` : ``}` +
             `**Effect Speed** | *Burst*\n` +
-            `**Flavor Text** | *${card.flavorText}*\n`
+            `**Flavor Text** | *${card.flavorText.replace(/\n/g, ' ')}*\n`
         return bodyTable
     }
 }
